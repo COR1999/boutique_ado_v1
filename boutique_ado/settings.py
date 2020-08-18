@@ -81,16 +81,15 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 'bag.contexts.bag_contents',
             ],
-            "builtins": [
-                "crispy_forms.templatetags.crispy_forms_tags"
-                "crispy_forms.templatetags.crispy_forms_field"
-
-            ]
+            # 'builtins': [
+            #     'crispy_forms.templatetags.crispy_forms_tags',
+            #     'crispy_forms.templatetags.crispy_forms_field',
+            # ]
         },
     },
 ]
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.sessionStorage"
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -172,5 +171,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = "usd"
-STRIPE_PUBLIC_KEY = os.getenv("STRIPLE_PUBLIC_KEY")
-STRIPE_SECRET_KEY = os.getenv("STRIPLE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = os.getenv("STRIPLE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.getenv("STRIPLE_SECRET_KEY", "")
+
+STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
